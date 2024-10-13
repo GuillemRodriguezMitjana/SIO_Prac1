@@ -1,0 +1,114 @@
+/* Estilos comunes en todas las páginas -------------------------------------- */
+:root {
+    --airbnb-color: #FF385C;
+    --background-color: #1C1C1C;
+    --text-color: #DDDDDD;
+    --text-color-dark: hsla(0, 0%, 87%, 0.4);
+    --text-color-darker: hsla(0, 0%, 87%, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    padding: 50px 100px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 25px;
+    font-size: 15px;
+}
+
+body * {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+/* --------------------------------------------------------------------------- */
+
+header {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+header p {
+    font-size: 13px;
+    text-align: center;
+    padding: 10px 15px;
+    background-color: var(--airbnb-color);
+    color: var(--background-color);
+    font-weight: bold;
+    border-radius: 10px;
+    width: fit-content;
+    line-height: normal;
+}
+
+header p span {
+    color: var(--text-color);
+}
+
+.separator {
+    width: 100vw;
+    transform: translateX(-100px);
+    height: 1px;
+    background-color: var(--text-color-darker);
+    margin: 50px 0;
+}
+
+.post-header h2 {
+    font-weight: normal;
+    font-size: 36px;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+}
+
+article {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 20px;
+    background-color: var(--text-color-darker);
+    border-radius: 10px;
+    margin: 30px 0;
+    transition: all .3s ease-in-out;
+}
+
+article:hover {
+    transform: scale(1.01);
+    cursor: pointer;
+    box-shadow: 0 0 20px 0 var(--airbnb-color);
+}
+
+article img {
+    width: 30%;
+    height: min-content;
+    border-radius: 10px;
+}
+
+article h3 {
+    font-weight: 300;
+    font-size: 20px;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    background-color: var(--background-color);
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+article:hover h3 {
+    color: var(--airbnb-color);
+}
+
+article p {
+    font-size: 13px;
+    line-height: 22px;
+}
+
