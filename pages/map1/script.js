@@ -1,40 +1,40 @@
-// Inicializar el mapa
-const map = L.map("map").setView([40.4168, -3.7038], 6);
+// Inicializar el mapa centrado en España
+const map = L.map("map").setView([40.4168, -3.7038], 6); // Centrado en España
 
-// Capa de mapa
+// Añadir capa base de OpenStreetMap
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 19,
   attribution: "© OpenStreetMap",
 }).addTo(map);
 
-// Cargar y añadir el GeoJSON de Madrid
-fetch("../../data/neighbourhoods_madrid.geojson")
+// Cargar y añadir GeoJSON de Madrid
+fetch("./data/madrid_price.geojson")
   .then((response) => response.json())
   .then((data) => {
-    L.geoJSON(data, {
-      style: function (feature) {
-        return { color: "blue", weight: 2 }; // Estilo para Madrid
-      },
-      onEachFeature: function (feature, layer) {
-        layer.bindPopup(
-          `<h3>${feature.properties.neighbourhood_group}</h3><p>${feature.properties.neighbourhood}</p>`
-        );
-      },
+    const heatDataMadrid = data.features.map((feature) => [
+      feature.geometry.coordinates[1], // Latitud
+      feature.geometry.coordinates[0], // Longitud
+      feature.properties.price / 500, // Intensidad basada en el precio
+    ]);
+    const heat = L.heatLayer(heatDataMadrid, {
+      radius: 20,
+      blur: 15,
+      maxZoom: 19,
     }).addTo(map);
   });
 
-// Cargar y añadir el GeoJSON de Barcelona
-fetch("../../data/neighbourhoods_barcelona.geojson")
+// Cargar y añadir GeoJSON de Barcelona
+fetch("./data/barcelona_price.geojson")
   .then((response) => response.json())
   .then((data) => {
-    L.geoJSON(data, {
-      style: function (feature) {
-        return { color: "orange", weight: 2 }; // Estilo para Barcelona
-      },
-      onEachFeature: function (feature, layer) {
-        layer.bindPopup(
-          `<h3>${feature.properties.neighbourhood_group}</h3><p>${feature.properties.neighbourhood}</p>`
-        );
-      },
+    const heatDataBarcelona = data.features.map((feature) => [
+      feature.geometry.coordinates[1], // Latitud
+      feature.geometry.coordinates[0], // Longitud
+      feature.properties.price / 500, // Intensidad basada en el precio
+    ]);
+    const heat = L.heatLayer(heatDataBarcelona, {
+      radius: 20,
+      blur: 15,
+      maxZoom: 19,
     }).addTo(map);
   });

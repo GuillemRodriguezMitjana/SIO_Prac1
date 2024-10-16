@@ -20,21 +20,18 @@ a {
 
 body {
     font-family: "Montserrat", sans-serif;
-    padding: 50px 100px;
     background-color: var(--background-color);
     color: var(--text-color);
     line-height: 25px;
     font-size: 15px;
-}
-
-body * {
-    max-width: 1000px;
+    max-width: 1500px;
     margin: 0 auto;
 }
 
 .navigator {
     font-size: 12px;
     color: var(--text-color-dark);
+    margin: 20px 0 0 20px;
 }
 
 .navigator a {
@@ -52,12 +49,19 @@ body * {
     background-color: var(--text-color-darker);
     margin: 10px 0 20px 0;
 }
+
+.content {
+    max-width: 95%;
+    margin: 0 auto;
+}
 /* --------------------------------------------------------------------------- */
 
 h1 {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 #map {
-    height: 600px;
+    height: 700px;
+    width: 80%;
+    margin: 0 auto;
 }
