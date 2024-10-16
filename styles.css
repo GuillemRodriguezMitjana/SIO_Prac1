@@ -1,4 +1,3 @@
-/* Estilos comunes en todas las páginas -------------------------------------- */
 :root {
     --airbnb-color: #FF385C;
     --background-color: #1C1C1C;
@@ -28,7 +27,6 @@ body {
     max-width: 1200px;
     margin: 0 auto;
 }
-/* --------------------------------------------------------------------------- */
 
 header {
     display: flex;
@@ -129,5 +127,25 @@ article p {
     background-color: var(--text-color-darker);
     border-radius: 10px;
     box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 600px) {
+    header img {
+        width: 100%;
+    }
+    
+    article {
+        flex-direction: column;
+    }
+
+    article img {
+        width: 100%;
+    }
+}
+
+@media (max-width: 500px) {
+    body {
+        padding: 50px;
+    }
 }
 

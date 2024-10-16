@@ -1,0 +1,257 @@
+:root {
+    --airbnb-color: #FF385C;
+    --background-color: #1C1C1C;
+    --text-color: #DDDDDD;
+    --text-color-dark: hsla(0, 0%, 87%, 0.4);
+    --text-color-darker: hsla(0, 0%, 87%, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 25px;
+    font-size: 15px;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding-bottom: 30px;
+}
+
+.navigator {
+    font-size: 12px;
+    color: var(--text-color-dark);
+    margin: 20px 0 0 20px;
+}
+
+.navigator a {
+    color: var(--text-color);
+    transition: color .3s ease;
+}
+
+.navigator a:hover {
+    color: var(--airbnb-color);
+}
+
+.separator {
+    width: 100%;
+    height: 1px;
+    background-color: var(--text-color-darker);
+    margin: 10px 0 20px 0;
+}
+
+.content {
+    max-width: 95%;
+    margin: 0 auto;
+}
+
+h1 {
+    margin-bottom: 40px;
+}
+
+h1 span {
+    font-weight: normal;
+    font-style: italic;
+    font-size: 25px;
+    color: var(--airbnb-color);
+}
+
+.map-container {
+    display: flex;
+    gap: 20px;
+}
+
+#map {
+    width: 80%;
+    height: 700px;
+    border-radius: 20px;
+}
+
+.layers {
+    margin-bottom: 10px;
+}
+
+.layers li {
+    padding: 10px;
+    justify-content: center;
+}
+
+.tiles,
+.layers {
+    background-color: var(--text-color-darker);
+    padding: 20px;
+    border-radius: 20px;
+    height: fit-content;
+}
+
+.tiles h3,
+.layers h3 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.layers h3 {
+    margin-bottom: 10px;
+}
+
+.tms-list,
+.layers-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    list-style: none;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.layers-list {
+    gap: 0;
+}
+
+.tms-selected {
+    background-color: var(--text-color-darker);
+}
+
+.tms-selected p {
+    color: var(--airbnb-color);
+}
+
+.tms-list li,
+.layers-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 50px;
+    transition: all .3s ease;
+}
+
+.layers-list li {
+    border-radius: 20px;
+}
+
+.tms-list li:hover:not(.tms-selected),
+.layers-list li:hover {
+    background-color: var(--background-color);
+    cursor: pointer;
+}
+
+.visible {
+    color: var(--text-color-dark);
+}
+
+.tms-list li div {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.tms-list li img {
+    height: 100%;
+    transform: translate(-15px);
+}
+
+.tms-list li p {
+    font-size: 12px;
+    transition: color .3 ease;
+}
+
+.center-buts-container {
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.center-buts-container button,
+#customPosForm input,
+#customPosForm button {
+    padding: 7px 10px;
+    background-color: var(--text-color-darker);
+    color: var(--text-color-dark);
+    border: none;
+    border-radius: 10px;
+    transition: all .3s ease-out;
+}
+
+.center-buts-container button:hover,
+#customPosForm button:hover {
+    cursor: pointer;
+    color: var(--airbnb-color);
+    box-shadow: 0 0 10px 0 var(--airbnb-color);
+}
+
+.center-container {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#customPosForm input {
+    color: var(--text-color);
+    border-radius: 0;
+    max-width: 100px;
+}
+
+#customPosForm input:first-of-type {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}   
+
+#customPosForm input:last-of-type {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}   
+
+@media (max-width: 900px) {
+    .map-container {
+        flex-direction: column;
+    }
+
+    #map {
+        width: 95%;
+        height: 500px;
+        margin: 0 auto;
+    }
+
+    .center-container {
+        width: 95%;
+        margin: 0 auto;
+    }
+
+    .tms-list {
+        flex-direction: row;
+        column-gap: 40px;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 700px) {
+    .center-container {
+        width: 95%;
+        margin: 0 auto;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    #customPosForm input {
+        max-width: 70px;
+    }
+}
+
+@media (max-width: 300px) {
+    .center-buts-container button {
+        width: 100%;
+    }
+}
