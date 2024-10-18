@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tipos de alojamiento | Mapa categórico</title>
+    <title>Distritos | Mapa de coropletas</title>
     <link rel="icon" href="../../images/favicon.png" type="image/x-icon" />
     <!-- Estilos CSS -->
     <link rel="stylesheet" href="../styles.css" />
@@ -22,15 +22,16 @@
     <!-- Menú de navegación -->
     <p class="navigator">
       <a href="../../index.html">
-        <span class="fas fa-home" style="margin-right: 2px"></span>
+        <i class="fas fa-home" style="margin-right: 2px"></i>
         Inicio
       </a>
-      | Mapa de categorías de los tipos de alojamientos
+      | Mapa de coropletas de distritos
     </p>
     <div class="separator"></div>
 
+    <!-- Contenido de la página -->
     <div class="content">
-      <h1>Mapa de categorías <span>tipos de alojamiento</span></h1>
+      <h1>Mapa de coropletas <span>distritos</span></h1>
 
       <!-- Container con las acciones para centrar el mapa -->
       <div class="center-container">
@@ -84,9 +85,9 @@
           <div class="layers">
             <h3>Capas</h3>
             <ul class="layers-list">
-              <li id="categ" style="font-size: 14px">
+              <li id="choropleth" style="font-size: 13px">
                 <i class="fa-solid fa-eye"></i>
-                Mapa de categorías
+                Mapa de coropletas
               </li>
             </ul>
           </div>
@@ -148,7 +149,7 @@
     />
     <!-- Tiles -->
     <script src="../tiles.js"></script>
-    <!-- Link al script JS -->
+    <!-- Script mapa -->
     <script src="script.js"></script>
   </body>
 </html>

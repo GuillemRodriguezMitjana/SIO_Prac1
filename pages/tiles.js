@@ -68,14 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   tmsItems.forEach((item) => {
     item.addEventListener("click", function () {
-      // Si se ha clickado a la TMS que ya está cargada, se ignora
-      if (item.classList.contains("tms-selected")) return;
-      tmsItems.forEach((i) => {
-        if (i != this) i.classList.remove("tms-selected");
-        else i.classList.add("tms-selected");
-      });
-      const selectedLayer = this.getAttribute("id");
-      changeMapLayer(selectedLayer);
+      changeMapLayer(item.getAttribute("id"));
     });
   });
 });
@@ -83,6 +76,17 @@ document.addEventListener("DOMContentLoaded", function () {
 // Función para cambiar el mapa según la capa seleccionada
 function changeMapLayer(layer) {
   let layersToKeep = [];
+
+  const tmsItems = document.querySelectorAll(".tms-list li");
+  tmsItems.forEach((item) => {
+    if (item.classList.contains("tms-selected")) {
+      if (item.getAttribute("id") != layer) {
+        item.classList.remove("tms-selected");
+      } else return;
+    } else if (item.getAttribute("id") == layer) {
+      item.classList.add("tms-selected");
+    }
+  });
 
   if (layer !== "osm-buildings" && OsmBuildings) {
     // Si se quita la de OSM, se quitan también los edificios 3D
