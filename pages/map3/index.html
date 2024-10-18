@@ -7,6 +7,7 @@
     <link rel="icon" href="../../images/favicon.png" type="image/x-icon" />
     <!-- Estilos CSS -->
     <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="styles.css" />
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <!-- Google Fonts -->
@@ -37,11 +38,11 @@
       <div class="center-container">
         <!-- Botones para centrar el mapa -->
         <div class="center-buts-container">
-          <button onclick="centerMap('40.4168', '-3.7038', '12')">
+          <button onclick="centerMap('40.4751', '-3.7038', '11')">
             <i class="fa-solid fa-thumbtack"></i>
             Madrid
           </button>
-          <button onclick="centerMap('41.3851', '2.1734', '13')">
+          <button onclick="centerMap('41.3951', '2.1434', '12')">
             <i class="fa-solid fa-thumbtack"></i>
             Barcelona
           </button>
@@ -76,62 +77,98 @@
 
       <!-- Contenedor del mapa -->
       <div class="map-container">
+        <!-- Slider para el precio -->
+        <div class="slider-container">
+          <input
+            type="range"
+            id="opacitySlider"
+            ,
+            min="0"
+            ,
+            max="100"
+            ,
+            step="10"
+            ,
+            value="50"
+          />
+          <div>
+            <p id="opacityValue"></p>
+            <p>%</p>
+          </div>
+        </div>
+
         <!-- Mapa -->
         <div id="map"></div>
 
         <!-- Barra lateral -->
         <div>
-          <!-- Capas -->
-          <div class="layers">
-            <h3>Capas</h3>
-            <ul class="layers-list">
-              <li id="choropleth" style="font-size: 13px">
-                <i class="fa-solid fa-eye"></i>
-                Mapa de coropletas
-              </li>
-            </ul>
+          <!-- Funcionalidades -->
+          <div class="funcs">
+            <h3>En función de</h3>
+            <div class="funcs-list">
+              <button id="precio_medio" onclick="changeFunctionality('precio_medio')" class="func-selected">
+                <i class="fa-solid fa-coins"></i>
+                Precio
+              </button>
+              <button id="total_alojamientos" onclick="changeFunctionality('total_alojamientos')">
+                <i class="fa-solid fa-building"></i>
+                Alojamientos
+              </button>
+              <button id="promedio_reseñas" onclick="changeFunctionality('promedio_reseñas')">
+                <i class="fa-solid fa-comments"></i>
+                Reseñas
+              </button>
+              <button id="valoracion_media" onclick="changeFunctionality('valoracion_media')">
+                <i class="fa-solid fa-star"></i>
+                Valoración general
+              </button>
+              <button id="valoracion_ubicacion" onclick="changeFunctionality('valoracion_ubicacion')">
+                <i class="fa-solid fa-star-half-stroke"></i>
+                Valoración barrio
+              </button>
+            </div>
           </div>
 
           <!-- TMSs -->
           <div class="tiles">
             <h3>Tile Map Services (TMS)</h3>
-            <ul class="tms-list">
-              <li id="openstreetmaps">
+            <div class="tms-list">
+              <button id="openstreetmaps" onclick="changeMapLayer('openstreetmaps')">
                 <div>
                   <img src="../../images/tms/openstreetmaps.png" alt="" />
                 </div>
-                <p>OpenStreetMaps</p>
-              </li>
-              <li id="stamen-toner">
+                OpenStreetMaps
+              </button>
+              <button id="stamen-toner" onclick="changeMapLayer('stamen-toner')">
                 <div>
                   <img src="../../images/tms/stamen-toner.png" alt="" />
                 </div>
-                <p>Stamen Toner</p>
-              </li>
-              <li id="alidade-satellite">
+                Stamen Toner
+              </button>
+              <button id="alidade-satellite" onclick="changeMapLayer('alidade-satellite')">
                 <div>
                   <img src="../../images/tms/alidade-satellite.png" alt="" />
                 </div>
-                <p>Alidade Satellite</p>
-              </li>
-              <li id="opentopomap">
+                Alidade Satellite
+              </button>
+              <button id="opentopomap" onclick="changeMapLayer('opentopomap')">
                 <div>
                   <img src="../../images/tms/opentopomap.png" alt="" />
                 </div>
-                <p>OpenTopoMap</p>
-              </li>
-              <li id="worldimagery">
+                OpenTopoMap
+              </button>
+              <button id="worldimagery" onclick="changeMapLayer('worldimagery')">
                 <div>
                   <img src="../../images/tms/esri-worldimagery.png" alt="" />
                 </div>
-                <p>ESRI WorldImagery</p>
-              </li>
-              <li id="osm-buildings">
+                ESRI WorldImagery
+              </button>
+              <button id="osm-buildings" onclick="changeMapLayer('osm-buildings')">
                 <div>
                   <img src="../../images/tms/oms-buildings.png" alt="" />
                 </div>
-                <p>OSM Buildings</p>
-              </li>
+                OSM Buildings
+              </button>
             </ul>
           </div>
         </div>

@@ -1,0 +1,120 @@
+:root {
+    --airbnb-color: #FF385C;
+    --background-color: #1C1C1C;
+    --text-color: #DDDDDD;
+    --text-color-dark: hsla(0, 0%, 87%, 0.4);
+    --text-color-darker: hsla(0, 0%, 87%, 0.1);
+}
+
+.leaflet-popup-content-wrapper {
+    background-color: var(--background-color) !important;
+}
+
+.leaflet-popup-tip {
+    background-color: var(--background-color) !important;
+}
+
+.listing-card {
+    max-width: 250px;
+    padding: 0;
+    color: var(--text-color)
+}
+
+.listing-card * {
+    margin: 0;
+    padding: 0;
+}
+
+.listing-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.listing-type {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    background-color: var(--text-color-darker);
+    box-shadow: 0 0 10px 0 black;
+    border-radius: 10px;
+}
+
+.listing-price {
+    margin-bottom: 10px !important;
+    color: var(--text-color-dark);
+}
+
+.listing-price span {
+    font-size: 30px;
+    color: var(--text-color);
+}
+
+.listing-title {
+    color: var(--airbnb-color)
+}
+
+.listing-img-container {
+    margin-top: 10px;
+    width: 100%;
+    max-height: 180px;
+    overflow: hidden;
+}
+
+.listing-img-container img {
+    width: 100%;
+}
+
+.listing-description {
+    max-height: 100px;
+    overflow-y: hidden;
+}
+
+.listing-info {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.listing-info div {
+    display: flex;
+    gap: 5px;
+}
+
+.listing-info div p {
+    margin: 0;
+}
+
+.tiles {
+    max-width: 230px;
+}
+
+.map-offset {
+    width: 10px;
+}
+
+.center-buts-container {
+    margin-left: 60px;
+}
+
+@media (max-width: 900px) {
+    .map-offset {
+        width: 100%;
+    }
+
+    .center-buts-container {
+        margin-left: 0;
+    }
+
+    .layers-list {
+        align-items: center;
+    }
+
+    .tiles {
+        max-width: inherit;
+    }
+}

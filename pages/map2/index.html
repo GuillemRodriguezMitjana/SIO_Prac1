@@ -7,6 +7,7 @@
     <link rel="icon" href="../../images/favicon.png" type="image/x-icon" />
     <!-- Estilos CSS -->
     <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="styles.css" />
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <!-- Google Fonts -->
@@ -36,11 +37,11 @@
       <div class="center-container">
         <!-- Botones para centrar el mapa -->
         <div class="center-buts-container">
-          <button onclick="centerMap('40.4168', '-3.7038', '12')">
+          <button onclick="centerMap('40.4268', '-3.7038', '11')">
             <i class="fa-solid fa-thumbtack"></i>
             Madrid
           </button>
-          <button onclick="centerMap('41.3851', '2.1734', '13')">
+          <button onclick="centerMap('41.4051', '2.1734', '12')">
             <i class="fa-solid fa-thumbtack"></i>
             Barcelona
           </button>
@@ -75,6 +76,9 @@
 
       <!-- Contenedor del mapa -->
       <div class="map-container">
+        <!-- Separación -->
+        <div class="map-offset"></div>
+
         <!-- Mapa -->
         <div id="map"></div>
 
@@ -83,54 +87,72 @@
           <!-- Capas -->
           <div class="layers">
             <h3>Capas</h3>
-            <ul class="layers-list">
-              <li id="categ" style="font-size: 14px">
-                <i class="fa-solid fa-eye"></i>
-                Mapa de categorías
-              </li>
-            </ul>
+            <div class="layers-list">
+              <button onclick="changeLayerView(this, 'entire-home')">
+                <i
+                  class="fa-solid fa-house"
+                  style="color: rgb(69, 69, 252)"
+                ></i>
+                Casa entera
+              </button>
+              <button onclick="changeLayerView(this, 'private-room')">
+                <i class="fa-solid fa-lock" style="color: orange"></i>
+                Hab. privada
+              </button>
+              <button onclick="changeLayerView(this, 'shared-room')">
+                <i class="fa-solid fa-lock-open" style="color: green"></i>
+                Hab. compartida
+              </button>
+              <button onclick="changeLayerView(this, 'hotel-room')">
+                <i
+                  class="fa-solid fa-square-h"
+                  style="color: rgb(255, 66, 66)"
+                ></i>
+                Hab. hotel
+              </button>
+            </div>
           </div>
 
           <!-- TMSs -->
           <div class="tiles">
             <h3>Tile Map Services (TMS)</h3>
-            <ul class="tms-list">
-              <li id="openstreetmaps">
+            <div class="tms-list">
+              <button id="openstreetmaps" onclick="changeMapLayer('openstreetmaps')">
                 <div>
                   <img src="../../images/tms/openstreetmaps.png" alt="" />
                 </div>
-                <p>OpenStreetMaps</p>
-              </li>
-              <li id="stamen-toner">
+                OpenStreetMaps
+              </button>
+              <button id="stamen-toner" onclick="changeMapLayer('stamen-toner')">
                 <div>
                   <img src="../../images/tms/stamen-toner.png" alt="" />
                 </div>
-                <p>Stamen Toner</p>
-              </li>
-              <li id="alidade-satellite">
+                Stamen Toner
+              </button>
+              <button id="alidade-satellite" onclick="changeMapLayer('alidade-satellite')">
                 <div>
                   <img src="../../images/tms/alidade-satellite.png" alt="" />
                 </div>
-                <p>Alidade Satellite</p>
-              </li>
-              <li id="opentopomap">
+                Alidade Satellite
+              </button>
+              <button id="opentopomap" onclick="changeMapLayer('opentopomap')">
                 <div>
                   <img src="../../images/tms/opentopomap.png" alt="" />
                 </div>
-                <p>OpenTopoMap</p>
-              </li>
-              <li id="worldimagery">
+                OpenTopoMap
+              </button>
+              <button id="worldimagery" onclick="changeMapLayer('worldimagery')">
                 <div>
                   <img src="../../images/tms/esri-worldimagery.png" alt="" />
                 </div>
-                <p>ESRI WorldImagery</p>
-              </li>
-              <li id="osm-buildings">
+                ESRI WorldImagery
+              </button>
+              <button id="osm-buildings" onclick="changeMapLayer('osm-buildings')">
                 <div>
                   <img src="../../images/tms/oms-buildings.png" alt="" />
                 </div>
-                <p>OSM Buildings</p>
-              </li>
+                OSM Buildings
+              </button>
             </ul>
           </div>
         </div>

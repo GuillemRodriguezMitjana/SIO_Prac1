@@ -10,6 +10,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
 }
 
 a {
@@ -17,8 +18,13 @@ a {
     color: inherit;
 }
 
+button {
+    background-color: transparent;
+    border: none;
+    color: var(--text-color);
+}
+
 body {
-    font-family: "Montserrat", sans-serif;
     background-color: var(--background-color);
     color: var(--text-color);
     line-height: 25px;
@@ -81,15 +87,14 @@ h1 span {
     margin-bottom: 10px;
 }
 
-.layers li {
-    padding: 10px;
-    justify-content: center;
+.layers button {
+    padding: 5px 10px;
 }
 
 .tiles,
 .layers {
     background-color: var(--text-color-darker);
-    padding: 20px;
+    padding: 20px 10px;
     border-radius: 20px;
     height: fit-content;
 }
@@ -119,15 +124,11 @@ h1 span {
 }
 
 .tms-selected {
-    background-color: var(--text-color-darker);
-}
-
-.tms-selected p {
     color: var(--airbnb-color);
 }
 
-.tms-list li,
-.layers-list li {
+.tms-list button,
+.layers-list button {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -135,12 +136,13 @@ h1 span {
     transition: all .3s ease;
 }
 
-.layers-list li {
-    border-radius: 20px;
+.layers-list button {
+    border-radius: 10px;
+    padding: 10px;
 }
 
-.tms-list li:hover:not(.tms-selected),
-.layers-list li:hover {
+.tms-list button:hover:not(.tms-selected),
+.layers-list button:hover {
     background-color: var(--background-color);
     cursor: pointer;
 }
@@ -149,19 +151,23 @@ h1 span {
     color: var(--text-color-dark);
 }
 
-.tms-list li div {
-    width: 50px;
-    height: 50px;
+.visible i {
+    color: var(--text-color-dark) !important;
+}
+
+.tms-list button div {
+    width: 40px;
+    height: 40px;
     border-radius: 100%;
     overflow: hidden;
 }
 
-.tms-list li img {
+.tms-list button img {
     height: 100%;
     transform: translate(-15px);
 }
 
-.tms-list li p {
+.tms-list button {
     font-size: 12px;
     transition: color .3 ease;
 }
@@ -170,7 +176,7 @@ h1 span {
     margin-bottom: 10px;
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 5px;
 }
 
 .center-buts-container button,

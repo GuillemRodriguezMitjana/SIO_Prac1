@@ -20,7 +20,8 @@
     <header>
       <img src="images/airbnb_logo.png" alt="" class="airbnb_logo" />
       <p>
-        Esta web analiza los alojamientos de Airbnb en las ciudades de
+        Esta web analiza geográficamente los alojamientos de Airbnb en las
+        ciudades de
         <span>Madrid</span> y
         <span>Barcelona</span>
       </p>
@@ -73,6 +74,15 @@
             </p>
             <ul class="variables-list">
               <li>room_type</li>
+              <li>name</li>
+              <li>description</li>
+              <li>description</li>
+              <li>picture_url</li>
+              <li>accommodates</li>
+              <li>bathrooms_text</li>
+              <li>bedrooms</li>
+              <li>price</li>
+              <li>listing_url</li>
               <li>longitude</li>
               <li>latitude</li>
             </ul>
@@ -86,10 +96,11 @@
           <div>
             <h3><b>Mapa de coropletas </b><i>distritos</i></h3>
             <p>
-              Este mapa muestra los diferentes distritos de ambas ciudades
-              utilizando un mapa de coropletas. En cada distrito hay información
-              sobre este, como ahora precios mínimo/máximo/medio, cantidad de
-              alojamientos, medias de valoración, etc.
+              Este mapa muestra los distritos de ambas ciudades utilizando un
+              mapa de coropletas. En cada distrito hay información como nombre,
+              descripcion, precio medio, cantidad de alojamientos, medias de
+              valoración, etc. Además, puedes cambiar la distribución entre
+              varias opciones.
             </p>
             <ul class="variables-list">
               <li>neighbourhood</li>
@@ -103,8 +114,5 @@
         </article>
       </a>
     </div>
-
-    <!-- Link al script JS -->
-    <script src="script.js"></script>
   </body>
 </html>

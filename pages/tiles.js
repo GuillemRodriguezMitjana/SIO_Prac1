@@ -58,41 +58,29 @@ const map = L.map("map").setView([40.4168, -3.7038], 6);
 let moving = false;
 
 // Añadir TMS por defecto
+currentLayerName = "alidade-satellite";
 currentLayer = StadiaAlidadeSatelliteLayer;
 currentLayer.addTo(map);
-document.getElementById("alidade-satellite").classList.add("tms-selected");
+document.getElementById(currentLayerName).classList.add("tms-selected");
 
-// Detectar cambio de TMS
-document.addEventListener("DOMContentLoaded", function () {
-  const tmsItems = document.querySelectorAll(".tms-list li");
-
-  tmsItems.forEach((item) => {
-    item.addEventListener("click", function () {
-      changeMapLayer(item.getAttribute("id"));
-    });
-  });
-});
-
-// Función para cambiar el mapa según la capa seleccionada
+// Función para cambiar el TMS
 function changeMapLayer(layer) {
+  // Ignorar si el TMS seleccionado es el que ya está activo
+  if (currentLayerName == layer) return;
+
   let layersToKeep = [];
 
-  const tmsItems = document.querySelectorAll(".tms-list li");
-  tmsItems.forEach((item) => {
-    if (item.classList.contains("tms-selected")) {
-      if (item.getAttribute("id") != layer) {
-        item.classList.remove("tms-selected");
-      } else return;
-    } else if (item.getAttribute("id") == layer) {
-      item.classList.add("tms-selected");
-    }
-  });
+  // Modificar estilos
+  button = document.getElementById(layer);
+  const tmsItems = document.querySelectorAll(".tms-list button");
+  tmsItems.forEach((item) => item.classList.remove("tms-selected"));
+  button.classList.add("tms-selected");
 
   if (layer !== "osm-buildings" && OsmBuildings) {
     // Si se quita la de OSM, se quitan también los edificios 3D
     map.removeLayer(OsmBuildings);
   } else if (layer == "osm-buildings") {
-    // Si se pone la de OSM, primero guardamos todas las capas que no sean el TLS
+    // Si se pone la de OSM, primero guardamos todas las capas que no sean el TMS
     map.eachLayer(function (layer) {
       if (layer !== currentLayer) {
         layersToKeep.push(layer);
@@ -106,9 +94,9 @@ function changeMapLayer(layer) {
     });
   }
 
-  // Eliminamos la capa TLS
+  // Eliminar la capa TMS
   map.removeLayer(currentLayer);
-  // Ponemos la TLS a la que se ha cambiado
+  // Cambiar TMS
   switch (layer) {
     case "openstreetmaps":
       currentLayer = openstreetmapsLayer;
@@ -136,7 +124,10 @@ function changeMapLayer(layer) {
   }
   map.addLayer(currentLayer);
 
-  // Recuperamos la resta de capas guardadas al principio
+  // Actualizar nombre de TMS activa
+  currentLayerName = layer;
+
+  // Recuperar la resta de capas guardadas al principio
   layersToKeep.forEach((layer) => {
     map.addLayer(layer);
   });
@@ -144,9 +135,9 @@ function changeMapLayer(layer) {
 
 // Función para centrar el mapa en unas coordenadas específicas
 function centerMap(latitude, longitude, zoom) {
-  const layersToHide = [];
+  let layersToHide = [];
 
-  // Si ya está en la posición a la que se quiere ir, se ignora
+  // Ignorar si ya está en la posición seleccionada
   let currentCenter = map.getCenter();
   let currentZoom = map.getZoom();
   if (
@@ -157,10 +148,9 @@ function centerMap(latitude, longitude, zoom) {
     return;
   }
 
-  // Se indica que el mapa está en movimiento
   moving = true;
 
-  // Guardamos y eliminamos todas las capas que no sean TLS
+  // Guardar y eliminar todas las capas que no sean TMS
   map.eachLayer(function (layer) {
     if (!layers.includes(layer)) {
       layersToHide.push(layer);
@@ -168,12 +158,12 @@ function centerMap(latitude, longitude, zoom) {
     }
   });
 
-  // Desplazamos el mapa con una velocidad en función de la distancia
+  // Desplazar el mapa con una velocidad en función de la distancia
   const distance = map.distance(currentCenter, L.latLng(latitude, longitude));
   let duration = Math.max(distance / 500000, 2);
   map.flyTo([latitude, longitude], zoom, { duration: duration });
 
-  // Una vez terminado el desplazamiento, recuperamos las capas eliminadas, actualizamos la vista y avisamos que el desplazamiento ha terminado
+  // Una vez terminado el desplazamiento, recuperar las capas eliminadas, actualizar la vista y avisar que el desplazamiento ha terminado
   map.on("zoomend", function () {
     layersToHide.forEach(function (layer) {
       map.addLayer(layer);
@@ -181,6 +171,7 @@ function centerMap(latitude, longitude, zoom) {
     currentCenter = map.getCenter();
     currentZoom = map.getZoom();
     map.setView([currentCenter.lat, currentCenter.lng], currentZoom);
+    layersToHide = [];
     moving = false;
   });
 }
@@ -209,9 +200,10 @@ document
     document.getElementById("longitude").value = "";
   });
 
+// Variable para guardar las capas no visibles
 let hiddenLayers = [];
 
-// Función para añadir o eliminar una capa
+// Función para ver o dejar de ver una capa
 function toggleLayerView(layer) {
   if (hiddenLayers.includes(layer)) {
     map.addLayer(layer);

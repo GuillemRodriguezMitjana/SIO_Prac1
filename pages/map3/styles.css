@@ -1,0 +1,168 @@
+:root {
+    --airbnb-color: #FF385C;
+    --background-color: #1C1C1C;
+    --text-color: #DDDDDD;
+    --text-color-dark: hsla(0, 0%, 87%, 0.4);
+    --text-color-darker: hsla(0, 0%, 87%, 0.1);
+}
+
+.funcs {
+    background-color: var(--text-color-darker);
+    padding: 20px 10px;
+    border-radius: 20px;
+    height: fit-content;
+    margin-bottom: 10px;
+}
+
+.funcs h3 {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.funcs-list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    width: 90%;
+    margin: 0 auto;
+    font-size: 13px;
+}
+
+.funcs-list button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 10px;
+    border-radius: 20px;
+    transition: all .3s ease;
+}
+
+.funcs-list button:hover:not(.func-selected) {
+    background-color: var(--background-color);
+    cursor: pointer;
+}
+
+.func-selected i {
+    color: var(--airbnb-color);
+}
+
+.slider-container {
+    width: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+input[type="range"] {
+    transform: rotate(-90deg);
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    width: 15rem;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    background: linear-gradient(to left, var(--text-color), transparent);
+    height: 0.3rem;
+    border-radius: 10px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    background-color: #ff507096;
+    box-shadow: 0 0 5px 0 black;
+    height: 2rem;
+    width: .5rem;
+    margin-top: -14px;
+    border-radius: 5px;
+}
+
+.slider-container div {
+    display: flex;
+    gap: 2px;
+    margin-top: 130px;
+    font-style: italic;
+    font-size: 14px;
+}
+
+.center-buts-container {
+    margin-left: 95px;
+}
+
+@media (max-width: 900px) {
+    .slider-container {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        margin-top: 15px;
+    }
+
+    input[type="range"] {
+        transform: rotate(0);
+    }
+
+    .slider-container div {
+        margin-top: 0;
+    }
+
+    .center-buts-container {
+        margin-left: 0;
+    }
+}
+
+.leaflet-popup-content-wrapper {
+    background-color: var(--background-color) !important;
+    width: 370px;
+}
+
+.leaflet-popup-tip {
+    background-color: var(--background-color) !important;
+}
+
+.leaflet-popup-content {
+    margin-right: 20px !important;
+    width: 330px !important;
+}
+
+.nh-card {
+    padding: 0;
+    color: var(--text-color)
+}
+
+.nh-card * {
+    margin: 0;
+    padding: 0;
+}
+
+.nh-card h1 {
+    font-style: italic;
+    font-size: 20px;
+    color: var(--text-color-darker);
+}
+
+.nh-card h2 {
+    font-size: 15px;
+    color: var(--airbnb-color);
+    margin: 5px 0 10px 0;
+}
+
+.nh-info {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 20px;
+    row-gap: 5px;
+    justify-content: center;
+}
+
+.nh-info div {
+    display: flex;
+    gap: 5px;
+}
+
+.nh-info div p {
+    margin: 0;
+}
