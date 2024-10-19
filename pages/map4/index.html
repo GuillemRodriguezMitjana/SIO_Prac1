@@ -61,13 +61,16 @@
       <div class="map-container">
         <!-- Añadir slider para cambiar la escala del mapa -->
         <div class="slider-container">
-          <input type="range" id="scaleSlider" min="1" max="10" step="0.5" value="1" />
+          <div class="slider">
+            <div></div>
+            <input type="range" id="scaleSlider" min="1" max="5" step="1" value="3" />
+            <div></div>
+          </div>
           <div>
-            <p>Escala: <span id="scaleValue">1</span></p>
+            <p id="scaleValue"></span></p>
           </div>
         </div>
-        <!-- Separación -->
-        <div class="map-offset"></div>
+
         <!-- Mapa -->
         <div id="map"></div>
 

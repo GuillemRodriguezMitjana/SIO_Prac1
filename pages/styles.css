@@ -136,6 +136,10 @@ h1 span {
     transition: all .3s ease;
 }
 
+.tms-list button {
+    text-align: start;
+}
+
 .layers-list button {
     border-radius: 10px;
     padding: 10px;

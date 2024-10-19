@@ -1,24 +1,29 @@
+// Capa del mapa de burbujas
 let bubbleLayer = null;
 
-// Función para centrar el mapa
-function centerMap(lat, lng, zoom) {
-  map.setView([lat, lng], zoom);
-}
+changingScale = false;
 
 // Función para calcular el radio de la burbuja según la escala y el conteo
 function getRadius(count, scale) {
-  return Math.sqrt(count) * scale;
+  return Math.sqrt(count / 10) * scale;
 }
 
 // Función para actualizar las burbujas en el mapa
 function updateBubbleMap(scale) {
+  // Ignorar cambio en caso de que no haya terminado uno previo
+  if (changingScale) return;
+  else changingScale = true;
+
+  // Limpiar la capa de burbujas actual
   if (bubbleLayer) map.removeLayer(bubbleLayer);
 
+  // Generar nuevo mapa de burbujas
   Promise.all([
     fetch("./data/madrid_bubble.geojson").then((res) => res.json()),
     fetch("./data/barcelona_bubble.geojson").then((res) => res.json()),
   ])
     .then(([madridData, barcelonaData]) => {
+      // Combinar los datos de ambas ciudades
       const combinedData = [...madridData.features, ...barcelonaData.features];
 
       bubbleLayer = L.geoJSON(combinedData, {
@@ -35,12 +40,20 @@ function updateBubbleMap(scale) {
         },
         onEachFeature: function (feature, layer) {
           layer.bindPopup(
-            `<div class="popup"><strong>${feature.properties.neighbourhood_group}</strong><br>
-              Alojamientos: ${feature.properties.count}</div>`
+            `<div class="popup">
+              <h3>${feature.properties.neighbourhood_group}</h3>
+              <div>
+                  <i class="fa-solid fa-building"></i>
+                  <p>${feature.properties.count}</p>
+              </div>
+            </div>`
           );
         },
       }).addTo(map);
-    });
+
+      changingScale = false;
+    })
+    .catch(() => (changingScale = false));
 }
 
 // Función para poner y quitar las burbujas
@@ -57,12 +70,14 @@ function changeLayerView(button) {
   toggleLayerView(bubbleLayer);
 }
 
-// Inicializar el mapa con escala predeterminada
 const scaleSlider = document.getElementById("scaleSlider");
 const scaleValue = document.getElementById("scaleValue");
-updateBubbleMap(scaleSlider.value);
 
-// Actualizar la escala al mover el slider
+// Primera inicialización del mapa
+updateBubbleMap(scaleSlider.value);
+scaleValue.innerHTML = scaleSlider.value;
+
+// Detectar el cambio de escala
 scaleSlider.addEventListener("change", () => {
   updateBubbleMap(scaleSlider.value);
 });
