@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Precios | Mapa de calor</title>
+    <link rel="icon" href="../../images/favicon.png" type="image/x-icon" />
+    <!-- Estilos CSS -->
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- Menú de navegación -->
+    <p class="navigator">
+      <a href="../../index.html">
+        <i class="fas fa-home" style="margin-right: 2px"></i>
+        Inicio
+      </a>
+      | Mapa de calor de precios
+    </p>
+    <div class="separator"></div>
+
+    <!-- Contenido de la página -->
+    <div class="content">
+      <h1>Mapa de calor <span>precios</span></h1>
+
+      <!-- Container con las acciones para centrar el mapa -->
+      <div class="center-container">
+        <!-- Botones para centrar el mapa -->
+        <div class="center-buts-container">
+          <button onclick="centerMap('40.4268', '-3.7038', '11')">
+            <i class="fa-solid fa-thumbtack"></i>
+            Madrid
+          </button>
+          <button onclick="centerMap('41.4051', '2.1734', '12')">
+            <i class="fa-solid fa-thumbtack"></i>
+            Barcelona
+          </button>
+          <button onclick="centerMap('40.4168', '-3.7038', '6')">
+            <i class="fa-solid fa-thumbtack"></i>
+            España
+          </button>
+        </div>
+
+        <!-- Formulario para centrar el mapa a una posición personalizada -->
+        <form id="customPosForm">
+          <input
+            type="text"
+            name="latitude"
+            id="latitude"
+            placeholder="Latitud"
+            required
+          />
+          <input
+            type="text"
+            name="longitude"
+            id="longitude"
+            placeholder="Longitud"
+            required
+          />
+          <input type="number" name="zoom" id="zoom" placeholder="Zoom" />
+          <button type="submit">
+            <i class="fa-solid fa-location-dot"></i>
+          </button>
+        </form>
+      </div>
+
+      <!-- Contenedor del mapa -->
+      <div class="map-container">
+        <!-- Slider para el precio -->
+        <div class="slider-container">
+          <input
+            type="range"
+            id="priceSlider"
+            ,
+            min="25"
+            ,
+            max="400"
+            ,
+            step="25"
+            ,
+            value="200"
+          />
+          <div>
+            <p id="priceValue"></p>
+            <p>€</p>
+          </div>
+        </div>
+
+        <!-- Mapa -->
+        <div id="map"></div>
+
+        <!-- Barra lateral -->
+        <div>
+          <!-- Capas -->
+          <div class="layers">
+            <h3>Capas</h3>
+            <div class="layers-list">
+              <button onclick="changeLayerView(this)">
+                <i class="fa-solid fa-eye"></i>
+                Mapa de calor
+              </button>
+            </div>
+          </div>
+
+          <!-- TMSs -->
+          <div class="tiles">
+            <h3>Tile Map Services (TMS)</h3>
+            <div class="tms-list">
+              <button id="openstreetmaps" onclick="changeMapLayer('openstreetmaps')">
+                <div>
+                  <img src="../../images/tms/openstreetmaps.png" alt="" />
+                </div>
+                OpenStreetMaps
+              </button>
+              <button id="stamen-toner" onclick="changeMapLayer('stamen-toner')">
+                <div>
+                  <img src="../../images/tms/stamen-toner.png" alt="" />
+                </div>
+                Stamen Toner
+              </button>
+              <button id="alidade-satellite" onclick="changeMapLayer('alidade-satellite')">
+                <div>
+                  <img src="../../images/tms/alidade-satellite.png" alt="" />
+                </div>
+                Alidade Satellite
+              </button>
+              <button id="opentopomap" onclick="changeMapLayer('opentopomap')">
+                <div>
+                  <img src="../../images/tms/opentopomap.png" alt="" />
+                </div>
+                OpenTopoMap
+              </button>
+              <button id="worldimagery" onclick="changeMapLayer('worldimagery')">
+                <div>
+                  <img src="../../images/tms/esri-worldimagery.png" alt="" />
+                </div>
+                ESRI WorldImagery
+              </button>
+              <button id="osm-buildings" onclick="changeMapLayer('osm-buildings')">
+                <div>
+                  <img src="../../images/tms/oms-buildings.png" alt="" />
+                </div>
+                OSM Buildings
+              </button>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Leaflet JS y OSM -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+    <script src="https://cdn.osmbuildings.org/classic/0.2.2b/OSMBuildings-Leaflet.js"></script>
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <!-- Tiles -->
+    <script src="../tiles.js"></script>
+    <!-- Script mapa -->
+    <script src="script.js"></script>
+  </body>
+</html>
