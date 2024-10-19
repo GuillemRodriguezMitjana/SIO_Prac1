@@ -1,0 +1,299 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.69707,
+          40.3965
+        ]
+      },
+      "properties": {
+        "neighbourhood_group": "Arganzuela",
+        "count": 1466
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.5802,
+          40.4725
+        ]
+      },
+      "properties": {
+        "neighbourhood_group": "Barajas",
+        "count": 190
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.74462,
+          40.37441
+        ]
+      },
+      "properties": {
+        "neighbourhood_group": "Carabanchel",
+        "count": 1029
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.70643,
+          40.41774
+        ]
+      },
+      "properties": {
+        "neighbourhood_group": "Centro",
+        "count": 11165
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.67596,
+          40.45883
+        ]
+      },
+      "properties": {
+        "neighbourhood_group": "Chamart\u00edn",
+        "count": 841
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.70574,
+          40.43891
+        ]
+      },
+      "properties": {
+        "neighbourhood_group": "Chamber\u00ed",
+        "count": 1768
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.65038,
+          40.44838
+        ]
+      },
+      "properties": {
+        "neighbourhood_group": "Ciudad Lineal",
+        "count": 973
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.7072,
+          40.5488
+        ]
+      },
+      "properties": {
+        "neighbourhood_group": "Fuencarral - El Pardo",
+        "count": 406
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.64214,
+          40.47229
+        ]
+      },
+      "properties": {
+        "neighbourhood_group": "Hortaleza",
+        "count": 534
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.7357,
+          40.4028
+        ]
+      },
+      "properties": {
+        "neighbourhood_group": "Latina",
+        "count": 777
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.7807,
+          40.4558
+        ]
+      },
+      "properties": {
+        "neighbourhood_group": "Moncloa - Aravaca",
+        "count": 718
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.64437,
+          40.40591
+        ]
+      },
+      "properties": {
+        "neighbourhood_group": "Moratalaz",
+        "count": 207
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.66875,
+          40.39807
+        ]
+      },
+      "properties": {
+        "neighbourhood_group": "Puente de Vallecas",
+        "count": 840
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.67596,
+          40.41075
+        ]
+      },
+      "properties": {
+        "neighbourhood_group": "Retiro",
+        "count": 952
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.68076,
+          40.4267
+        ]
+      },
+      "properties": {
+        "neighbourhood_group": "Salamanca",
+        "count": 1757
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.6124,
+          40.4313
+        ]
+      },
+      "properties": {
+        "neighbourhood_group": "San Blas - Canillejas",
+        "count": 606
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.69836,
+          40.46053
+        ]
+      },
+      "properties": {
+        "neighbourhood_group": "Tetu\u00e1n",
+        "count": 1616
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.70651,
+          40.38369
+        ]
+      },
+      "properties": {
+        "neighbourhood_group": "Usera",
+        "count": 626
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.5956,
+          40.4017
+        ]
+      },
+      "properties": {
+        "neighbourhood_group": "Vic\u00e1lvaro",
+        "count": 86
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.6118,
+          40.3732
+        ]
+      },
+      "properties": {
+        "neighbourhood_group": "Villa de Vallecas",
+        "count": 142
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.6957,
+          40.34497
+        ]
+      },
+      "properties": {
+        "neighbourhood_group": "Villaverde",
+        "count": 281
+      }
+    }
+  ]
+}

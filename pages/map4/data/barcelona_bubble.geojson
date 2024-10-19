@@ -1,0 +1,145 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.18036,
+          41.38164
+        ]
+      },
+      "properties": {
+        "neighbourhood_group": "Ciutat Vella",
+        "count": 4565
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.16388,
+          41.39349
+        ]
+      },
+      "properties": {
+        "neighbourhood_group": "Eixample",
+        "count": 6882
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.15838,
+          41.40649
+        ]
+      },
+      "properties": {
+        "neighbourhood_group": "Gr\u00e0cia",
+        "count": 1653
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.15057,
+          41.42896
+        ]
+      },
+      "properties": {
+        "neighbourhood_group": "Horta-Guinard\u00f3",
+        "count": 575
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.13289,
+          41.38499
+        ]
+      },
+      "properties": {
+        "neighbourhood_group": "Les Corts",
+        "count": 402
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.17907,
+          41.44517
+        ]
+      },
+      "properties": {
+        "neighbourhood_group": "Nou Barris",
+        "count": 221
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.19589,
+          41.43732
+        ]
+      },
+      "properties": {
+        "neighbourhood_group": "Sant Andreu",
+        "count": 318
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.20276,
+          41.40823
+        ]
+      },
+      "properties": {
+        "neighbourhood_group": "Sant Mart\u00ed",
+        "count": 1808
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.14457,
+          41.36869
+        ]
+      },
+      "properties": {
+        "neighbourhood_group": "Sants-Montju\u00efc",
+        "count": 1997
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.131111,
+          41.398611
+        ]
+      },
+      "properties": {
+        "neighbourhood_group": "Sarri\u00e0-Sant Gervasi",
+        "count": 1061
+      }
+    }
+  ]
+}
