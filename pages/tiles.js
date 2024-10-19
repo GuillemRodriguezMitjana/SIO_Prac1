@@ -158,10 +158,8 @@ function centerMap(latitude, longitude, zoom) {
     }
   });
 
-  // Desplazar el mapa con una velocidad en función de la distancia
-  const distance = map.distance(currentCenter, L.latLng(latitude, longitude));
-  let duration = Math.max(distance / 500000, 2);
-  map.flyTo([latitude, longitude], zoom, { duration: duration });
+  // Desplazar el mapa
+  map.flyTo([latitude, longitude], zoom, { duration: 3 });
 
   // Una vez terminado el desplazamiento, recuperar las capas eliminadas, actualizar la vista y avisar que el desplazamiento ha terminado
   map.on("zoomend", function () {
@@ -185,7 +183,7 @@ document
     // Obtenemos los valores del formulario (latitud, longitud y zoom)
     const latitude = parseFloat(document.getElementById("latitude").value);
     const longitude = parseFloat(document.getElementById("longitude").value);
-    const zoom = document.getElementById("zoom")
+    const zoom = document.getElementById("zoom").value
       ? document.getElementById("zoom").value
       : map.getZoom();
 
