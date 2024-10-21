@@ -1,6 +1,4 @@
-# Biblioteca que facilita la manipulación de datos estructurados
 import pandas as pd
-# Biblioteca para crear gráficos y visualizaciones
 import matplotlib.pyplot as plt
 
 # Función que genera tabla de frecuencias y gráfica de pastel para una ciudad
