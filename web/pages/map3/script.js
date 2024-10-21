@@ -1,10 +1,4 @@
-// Cambiar TMS por defecto
-changeMapLayer("worldimagery");
-
-// Capa del mapa de coropletas
-choroplethLayer = null;
-
-// Función para asignar colores en 5 rangos
+// Función para calcular 5 rangos en función de la media y la desviación estándar del conjunto
 let rango1, rango2, rango3, rango4, rango5;
 function obtenerRangos(data) {
   // Limpiar datos
@@ -45,8 +39,6 @@ function getColor(value) {
     return "#880000";
   }
 }
-
-changingOpacity = false;
 
 // Función para cambiar la opacidad del mapa de coropletas
 function updateChoroplethMap(opacity, type = "precio_medio") {
@@ -105,8 +97,7 @@ function updateChoroplethMap(opacity, type = "precio_medio") {
                   <p>${feature.properties.valoracion_ubicacion}</p>
                 </div>
               </div>
-            </div>
-          `;
+            </div>`;
           layer.bindPopup(popupContent);
         },
       });
@@ -133,6 +124,36 @@ function updateChoroplethMap(opacity, type = "precio_medio") {
     .catch(() => (changingOpacity = false));
 }
 
+// Función para cambiar la distribución
+function changeFunctionality(funct) {
+  // Ignorar si el mapa se está centrando
+  if (moving) return;
+
+  // Ignorar si la funcionalidad seleccionada ya está activa
+  button = document.getElementById(funct);
+  if (button.classList.contains("func-selected")) return;
+
+  // Cambiar estilos
+  funcItems = document.querySelectorAll(".funcs-list button");
+  funcItems.forEach((item) => item.classList.remove("func-selected"));
+  button.classList.add("func-selected");
+
+  // Cambiar la funcionalidad
+  updateChoroplethMap(opacitySlider.value, funct);
+}
+
+// MAIN ------------------------------------------------------------------------------------
+
+// Cambiar TMS por defecto
+changeMapLayer("worldimagery");
+
+// Capa del mapa de coropletas
+choroplethLayer = null;
+
+// Variable para indicar que se está cambiando la opacidad
+changingOpacity = false;
+
+// DOMs del slider
 const opacitySlider = document.getElementById("opacitySlider");
 const opacityValue = document.getElementById("opacityValue");
 
@@ -150,21 +171,3 @@ opacitySlider.addEventListener("change", () => {
 opacitySlider.addEventListener("input", () => {
   opacityValue.innerHTML = opacitySlider.value;
 });
-
-// Función para cambiar la distribución
-function changeFunctionality(funct) {
-  // Ignorar si el mapa se está centrando
-  if (moving) return;
-
-  // Ignorar si la funcionalidad seleccionada es la que ya está activa
-  button = document.getElementById(funct);
-  if (button.classList.contains("func-selected")) return;
-
-  // Cambiar estilos
-  funcItems = document.querySelectorAll(".funcs-list button");
-  funcItems.forEach((item) => item.classList.remove("func-selected"));
-  button.classList.add("func-selected");
-
-  // Cambiar la funcionalidad
-  updateChoroplethMap(opacitySlider.value, funct);
-}

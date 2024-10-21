@@ -83,30 +83,6 @@ input[type="range"]::-webkit-slider-thumb {
     margin-left: 60px;
 }
 
-@media (max-width: 900px) {
-    .slider-container {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        gap: 20px;
-        justify-content: center;
-        align-items: center;
-        margin-top: 15px;
-    }
-
-    .slider {
-        transform: rotate(0);
-    }
-
-    .slider-container div {
-        margin-top: 0;
-    }
-
-    .center-buts-container {
-        margin-left: 0;
-    }
-}
-
 .leaflet-popup {
     width: 200px;
 }
@@ -227,4 +203,53 @@ input[type="range"]::-webkit-slider-thumb {
 .tms-list {
     max-height: 170px;
     overflow-y: scroll;
+}
+
+@media (max-width: 900px) {
+    .slider-container {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        margin-top: 15px;
+    }
+
+    .slider {
+        transform: rotate(0);
+    }
+
+    .slider-container div {
+        margin-top: 0;
+    }
+
+    .center-buts-container {
+        margin-left: 0;
+    }
+
+    .top-madrid-list div,
+    .top-barcelona-list div {
+        width: fit-content;
+        margin: 0 auto;
+    }
+
+    .layers-container {
+        display: flex;
+        gap: 15px;
+    }
+
+    .lat-nav {
+        flex-direction: column;
+    }
+
+    .layers {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 500px) {
+    .layers-container {
+        flex-direction: column;
+    }
 }

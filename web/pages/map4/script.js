@@ -1,14 +1,9 @@
-// Capa del mapa de burbujas
-let bubbleLayer = null;
-
-changingScale = false;
-
 // Función para calcular el radio de la burbuja según la escala y el conteo
 function getRadius(count, scale) {
   return Math.sqrt(count / 10) * scale;
 }
 
-// Función para actualizar las burbujas en el mapa
+// Función para actualizar la escala de las burbujas en el mapa
 function updateBubbleMap(scale) {
   // Ignorar cambio en caso de que no haya terminado uno previo
   if (changingScale) return;
@@ -19,8 +14,8 @@ function updateBubbleMap(scale) {
 
   // Generar nuevo mapa de burbujas
   Promise.all([
-    fetch("./data/madrid_bubble.geojson").then((res) => res.json()),
-    fetch("./data/barcelona_bubble.geojson").then((res) => res.json()),
+    fetch("./data/madrid_bubbles.geojson").then((res) => res.json()),
+    fetch("./data/barcelona_bubbles.geojson").then((res) => res.json()),
   ])
     .then(([madridData, barcelonaData]) => {
       // Combinar los datos de ambas ciudades
@@ -34,21 +29,20 @@ function updateBubbleMap(scale) {
             radius: radius,
             fillColor: "blue",
             color: "#000",
-            weight: 1,
+            weight: 2,
             opacity: 1,
-            fillOpacity: 0.6,
+            fillOpacity: 0.3,
           });
         },
         onEachFeature: function (feature, layer) {
-          layer.bindPopup(
-            `<div class="popup">
+          layer.bindPopup(`
+            <div class="popup">
               <h3>${feature.properties.neighbourhood_group}</h3>
               <div>
-                  <i class="fa-solid fa-building"></i>
-                  <p>${feature.properties.count}</p>
+                <i class="fa-solid fa-building"></i>
+                <p>${feature.properties.count}</p>
               </div>
-            </div>`
-          );
+            </div>`);
         },
       }).addTo(map);
 
@@ -67,10 +61,19 @@ function changeLayerView(button) {
   button.querySelector("i").classList.toggle("fa-eye");
   button.querySelector("i").classList.toggle("fa-eye-slash");
 
-  // Cambiar
+  // Cambiar la visibilidad
   toggleLayerView(bubbleLayer);
 }
 
+// MAIN ------------------------------------------------------------------------------------
+
+// Capa del mapa de burbujas
+let bubbleLayer = null;
+
+// Variable para indicar que se está cambiando la escala
+changingScale = false;
+
+// DOMs del slider
 const scaleSlider = document.getElementById("scaleSlider");
 const scaleValue = document.getElementById("scaleValue");
 

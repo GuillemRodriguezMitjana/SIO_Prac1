@@ -1,12 +1,3 @@
-// Cambiar TMS por defecto
-changeMapLayer("osm-buildings");
-
-// Crear capas individuales para cada tipo de alojamiento
-const entireHomeLayer = L.layerGroup();
-const privateRoomLayer = L.layerGroup();
-const sharedRoomLayer = L.layerGroup();
-const hotelRoomLayer = L.layerGroup();
-
 // Función para asignar colores según el tipo de alojamiento
 function getColor(roomType) {
   switch (roomType) {
@@ -33,6 +24,47 @@ function pointToLayer(feature, latlng) {
     fillOpacity: 0.6,
   });
 }
+
+// Función para cambiar la visibilidad de las capas de tipo de alojamiento
+function changeLayerView(button, type) {
+  // Ignorar si el mapa se está centrando
+  if (moving) return;
+
+  // Cambiar estilos
+  button.classList.toggle("visible");
+
+  // Seleccionar la capa correspondiente
+  let layer = null;
+  switch (type) {
+    case "entire-home":
+      layer = entireHomeLayer;
+      break;
+    case "private-room":
+      layer = privateRoomLayer;
+      break;
+    case "shared-room":
+      layer = sharedRoomLayer;
+      break;
+    case "hotel-room":
+      layer = hotelRoomLayer;
+      break;
+    default:
+  }
+
+  // Cambiar la visibilidad de la capa si se ha encontrado
+  if (layer !== null) toggleLayerView(layer);
+}
+
+// MAIN ------------------------------------------------------------------------------------
+
+// Cambiar TMS por defecto
+changeMapLayer("osm-buildings");
+
+// Crear capas individuales para cada tipo de alojamiento
+const entireHomeLayer = L.layerGroup();
+const privateRoomLayer = L.layerGroup();
+const sharedRoomLayer = L.layerGroup();
+const hotelRoomLayer = L.layerGroup();
 
 // Variables para almacenar los datos de cada tipo
 const entireHomeData = [];
@@ -105,8 +137,7 @@ Promise.all([
         }
 
         // Pop-up al hacer click en el marcador
-        marker.bindPopup(
-          `
+        marker.bindPopup(`
           <div class="listing-card">
             <div class="listing-header">
               <div class="listing-type">
@@ -136,9 +167,7 @@ Promise.all([
             <a href="${feature.properties.url}" target="_blank" style="text-decoration: none; color: #3498db;">
               Ver más detalles
             </a>
-          </div>
-          `
-        );
+          </div>`);
       });
     };
 
@@ -155,33 +184,3 @@ Promise.all([
     hotelRoomLayer.addTo(map);
   })
   .catch();
-
-// Función para cambiar la visibilidad de las capas de tipo de alojamiento
-function changeLayerView(button, type) {
-  // Ignorar si el mapa se está centrando
-  if (moving) return;
-
-  // Cambiar estilos
-  button.classList.toggle("visible");
-
-  // Seleccionar la capa correspondiente
-  let layer = null;
-  switch (type) {
-    case "entire-home":
-      layer = entireHomeLayer;
-      break;
-    case "private-room":
-      layer = privateRoomLayer;
-      break;
-    case "shared-room":
-      layer = sharedRoomLayer;
-      break;
-    case "hotel-room":
-      layer = hotelRoomLayer;
-      break;
-    default:
-  }
-
-  // Cambiar la visibilidad de la capa si se ha encontrado
-  if (layer !== null) toggleLayerView(layer);
-}

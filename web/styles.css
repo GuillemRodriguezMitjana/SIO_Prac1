@@ -34,7 +34,7 @@ header {
     gap: 30px;
 }
 
-header img {
+.airbnb-logo {
     width: 50%;
     margin: 0 auto;
 }
@@ -50,6 +50,17 @@ header p {
     width: fit-content;
     line-height: normal;
     margin: 0 auto;
+    animation: scale-animation 2s infinite ease-in-out;
+}
+
+@keyframes scale-animation {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.03);
+        box-shadow: 0 0 40px 0 #ff385d63;
+    }
 }
 
 header p span {
@@ -129,7 +140,17 @@ article p {
     box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.5);
 }
 
+@media (max-width: 800px) {
+    body {
+        padding: 50px;
+    }
+}
+
 @media (max-width: 600px) {
+    body {
+        padding: 40px;
+    }
+
     header img {
         width: 100%;
     }
@@ -145,7 +166,7 @@ article p {
 
 @media (max-width: 500px) {
     body {
-        padding: 50px;
+        padding: 30px;
     }
 }
 

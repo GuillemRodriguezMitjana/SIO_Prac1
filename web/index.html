@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Análisis Geográfico - Airbnb</title>
+    <title>Análisis Geográfico | Airbnb</title>
     <link rel="icon" href="images/favicon.png" type="image/x-icon" />
     <!-- Estilos propios CSS -->
     <link rel="stylesheet" href="styles.css" />
@@ -18,7 +18,7 @@
 
   <body>
     <header>
-      <img src="images/airbnb_logo.png" alt="" class="airbnb_logo" />
+      <img src="images/airbnb_logo.png" alt="" class="airbnb-logo" />
       <p>
         Esta web analiza geográficamente los alojamientos de Airbnb en las
         ciudades de
@@ -70,7 +70,8 @@
               Este mapa muestra la distribución espacial de los diferentes tipos
               de alojamientos (shared room, hotel room, entire home/apt, private
               room) utilizando un mapa de categorías. Cada color representa un
-              tipo de alojamiento.
+              tipo de alojamiento y los puntos ofrecen información sobre los
+              alojamientos.
             </p>
             <ul class="variables-list">
               <li>room_type</li>
@@ -99,7 +100,7 @@
               Este mapa muestra los barrios de ambas ciudades utilizando un mapa
               de coropletas. En cada barrio hay información como nombre,
               descripcion, precio medio, cantidad de alojamientos, medias de
-              valoración, etc. Además, puedes cambiar la distribución entre
+              valoración, etc. Además, se puede cambiar la distribución entre
               varias opciones.
             </p>
             <ul class="variables-list">
@@ -121,7 +122,7 @@
             <h3><b>Mapa de burbujas </b><i>cantidad de alojamientos</i></h3>
             <p>
               Este mapa muestra la cantidad de alojamientos que hay por distrito
-              utilizando un mapa de burbuja. Cuanto más grande sea la burbuja,
+              utilizando un mapa de burbujas. Cuanto más grande sea la burbuja,
               mayor será la cantidad de alojamientos en ese distrito.
             </p>
             <ul class="variables-list">
@@ -140,9 +141,9 @@
             <h3><b>Mapa de categorías </b><i>hosts</i></h3>
             <p>
               Este mapa muestra la distribución espacial de los alojamientos de
-              los 5 hosts más grandes de cada ciudad. Cada color representa un
-              host diferente y en caso de haber el mismo en ambas ciudades,
-              comparten el color.
+              los 5 hosts más grandes de cada ciudad. Cada host,
+              independientemente de la ciudad, tiene su propio color diferente
+              del resto, el qual se randomiza al cargar el mapa.
             </p>
             <ul class="variables-list">
               <li>host_id</li>

@@ -1,7 +1,7 @@
 import pandas as pd
 import json
 
-# Coordenadas manuales de los distritos de Madrid y Barcelona
+# Coordenadas centro de los distritos de Madrid y Barcelona
 district_coords = {
     "Madrid": {
         "Centro": [40.41774, -3.70643],
@@ -40,14 +40,15 @@ district_coords = {
     }
 }
 
-# Función para crear un GeoJSON a partir de un DataFrame y coordenadas manuales
+# Función para crear un GeoJSON a partir de un DataFrame y coordenadas
 def dataframe_to_geojson(df, coords, output_filename):
+    # Inicializar el GeoJSON
     geojson = {
         "type": "FeatureCollection",
         "features": []
     }
 
-    # Crear features para cada distrito con su coordenada manual
+    # Crear features para cada distrito con sus coordenadas
     for _, row in df.iterrows():
         district = row["neighbourhood_group_cleansed"]
         if district in coords:
@@ -69,7 +70,7 @@ def dataframe_to_geojson(df, coords, output_filename):
     with open(output_filename, "w") as f:
         json.dump(geojson, f, indent=2)
 
-# Cargar los datos de los CSVs
+# Cargar los datos
 df_madrid = pd.read_csv("../../../data/listings_madrid.csv")
 df_barcelona = pd.read_csv("../../../data/listings_barcelona.csv")
 
@@ -82,5 +83,5 @@ df_madrid_counts = count_accommodations(df_madrid)
 df_barcelona_counts = count_accommodations(df_barcelona)
 
 # Crear los archivos GeoJSON
-dataframe_to_geojson(df_madrid_counts, district_coords["Madrid"], "madrid_bubble.geojson")
-dataframe_to_geojson(df_barcelona_counts, district_coords["Barcelona"], "barcelona_bubble.geojson")
+dataframe_to_geojson(df_madrid_counts, district_coords["Madrid"], "madrid_bubbles.geojson")
+dataframe_to_geojson(df_barcelona_counts, district_coords["Barcelona"], "barcelona_bubbles.geojson")

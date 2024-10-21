@@ -84,6 +84,7 @@ h1 span {
 }
 
 .layers {
+    min-width: 220px;
     margin-bottom: 10px;
 }
 
@@ -224,6 +225,26 @@ h1 span {
     border-bottom-right-radius: 10px;
 }   
 
+@media (max-width: 1000px) {
+    .center-container {
+        width: 100%;
+        flex-direction: column;
+        justify-content: center
+    }
+
+    .center-buts-container {
+        margin-left: 0 !important;
+        justify-content: center;
+    }
+
+    #customPosForm {
+        display: flex;
+        justify-content: center;
+        gap: 4px;
+        margin-bottom: 15px;
+    }
+}
+
 @media (max-width: 900px) {
     .map-container {
         flex-direction: column;
@@ -239,11 +260,28 @@ h1 span {
         width: 95%;
         margin: 0 auto;
     }
+    
+    .lat-nav {
+        display: flex;
+        width: 100%;
+        gap: 15px
+    }
+    
+    .lat-nav div {
+        flex: 1;
+    }
 
     .tms-list {
-        flex-direction: row;
-        column-gap: 40px;
-        flex-wrap: wrap;
+        display: inline;
+    }
+
+    .tms-list button {
+        margin: 0 auto;
+        margin-bottom: 10px;
+    }
+    
+    .layers {
+        min-width: 0;
     }
 }
 
@@ -258,6 +296,16 @@ h1 span {
 
     #customPosForm input {
         max-width: 70px;
+    }
+}
+
+@media (max-width: 600px) {
+    .lat-nav {
+        flex-direction: column;
+    }
+
+    .layers {
+        margin-bottom: 0;
     }
 }
 

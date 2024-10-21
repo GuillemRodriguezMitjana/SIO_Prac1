@@ -1,19 +1,3 @@
-// Cambiar TMS por defecto
-changeMapLayer("stamen-toner");
-
-// Capa del mapa de tráfico
-let categoryLayer = null;
-
-let hostNames = {};
-const madridTop = document.querySelector(".top-madrid-list");
-let madridCount = {};
-const barcelonaTop = document.querySelector(".top-barcelona-list");
-let barcelonaCount = {};
-
-changingRadius = false;
-
-let hostColors = {};
-
 // Función para generar un color hexadecimal aleatorio
 function getRandomColor() {
   let letters = "0123456789ABCDEF";
@@ -26,16 +10,17 @@ function getRandomColor() {
 
 // Función para obtener un color único basado en el host_id
 function getColor(hostId) {
-  if (hostColors[hostId]) return hostColors[hostId];
-
-  // Generar un color aleatorio si el host aún no tiene uno asignado
-  let newColor = getRandomColor();
-  hostColors[hostId] = newColor;
-  return newColor;
+  // Si el host no tiene ningún color asignado
+  if (!hostColors[hostId]) {
+    // Generar un color aleatorio y asignar
+    let newColor = getRandomColor();
+    hostColors[hostId] = newColor;
+  }
+  return hostColors[hostId];
 }
 
-// Función para actualizar el mapa de categorías
-function updateCategoryMap(radius = 5) {
+// Función para actualizar el radio de los puntos en el mapa
+function updateCategoryMap(radius) {
   // Ignorar cambio en caso de que no haya terminado uno previo
   if (changingRadius) return;
   else changingRadius = true;
@@ -43,10 +28,11 @@ function updateCategoryMap(radius = 5) {
   // Limpiar la capa de categorías actual
   if (categoryLayer) map.removeLayer(categoryLayer);
 
+  // Diccionarios para contar el número de alojamientos de cada distrito en ambas ciudades
   madridCount = {};
   barcelonaCount = {};
 
-  // Cargar los archivos GeoJSON
+  // Generar nuevo mapa de categorías
   Promise.all([
     fetch("./data/madrid_hosts.geojson").then((response) => response.json()),
     fetch("./data/barcelona_hosts.geojson").then((response) => response.json()),
@@ -65,15 +51,17 @@ function updateCategoryMap(radius = 5) {
           return L.circleMarker(latlng, {
             radius: radius, // Tamaño del marcador
             fillColor: getColor(feature.properties.host_id),
-            color: getColor(feature.properties.host_id),
+            color: "#000",
             weight: 1,
             opacity: 1,
-            fillOpacity: 0.8,
+            fillOpacity: 0.7,
           });
         },
         onEachFeature: (feature, layer) => {
+          // Guardar el id asociado de cada host
           hostNames[feature.properties.host_id] = feature.properties.host_name;
 
+          // Incrementar el contador de alojamientos de cada host
           switch (feature.properties.city) {
             case "Madrid":
               if (madridCount[feature.properties.host_id])
@@ -88,14 +76,14 @@ function updateCategoryMap(radius = 5) {
             default:
           }
 
+          // Añadir icono si el host está verificado
           const verified =
             feature.properties.host_identity_verified == "t"
               ? "#FF385C"
               : "transparent";
 
           // Popup con información del host
-          layer.bindPopup(
-            `
+          layer.bindPopup(`
             <div class="host-card">
               <p class="host-since">${feature.properties.host_since}</p>
               <div class="host-name-container">
@@ -125,48 +113,53 @@ function updateCategoryMap(radius = 5) {
                   <i class="fa-solid fa-building"></i>
                 </a>
               </div>
-            </div>
-            `
-          );
+            </div>`);
         },
       }).addTo(map);
 
+      // Ordenador contador de alojamientos de Madrid
       let sortedMadridCount = Object.entries(madridCount).sort(
         (a, b) => b[1] - a[1]
       );
+      // Vaciar top de Madrid
       madridTop.querySelectorAll("div").forEach((div) => div.remove());
+      // Actualizar top de Madrid
       for (let [host, count] of sortedMadridCount) {
+        // Crear elementos HTML necesarios
         let div = document.createElement("div");
         let color = document.createElement("div");
         let p = document.createElement("p");
         let span = document.createElement("span");
-
+        // Aplicar estilos
         color.style.background = hostColors[host];
         p.classList.add("host-count");
         p.textContent = hostNames[host];
         span.textContent = count;
-
+        // Añadir elementos a la web
         p.appendChild(span);
         div.appendChild(color);
         div.appendChild(p);
         madridTop.appendChild(div);
       }
 
+      // Ordenador contador de alojamientos de Barcelona
       let sortedBarcelonaCount = Object.entries(barcelonaCount).sort(
         (a, b) => b[1] - a[1]
       );
+      // Vaciar top de Barcelona
       barcelonaTop.querySelectorAll("div").forEach((div) => div.remove());
       for (let [host, count] of sortedBarcelonaCount) {
+        // Crear elementos HTML necesarios
         let div = document.createElement("div");
         let color = document.createElement("div");
         let p = document.createElement("p");
         let span = document.createElement("span");
-
+        // Aplicar estilos
         color.style.background = hostColors[host];
         p.classList.add("host-count");
         p.textContent = hostNames[host];
         span.textContent = count;
-
+        // Añadir elementos a la web
         p.appendChild(span);
         div.appendChild(color);
         div.appendChild(p);
@@ -178,6 +171,32 @@ function updateCategoryMap(radius = 5) {
     .catch(() => (changingRadius = false));
 }
 
+// MAIN ------------------------------------------------------------------------------------
+
+// Cambiar TMS por defecto
+changeMapLayer("stamen-toner");
+
+// Capa del mapa de tráfico
+let categoryLayer = null;
+
+// Variable para relaciones id-nombre
+let hostNames = {};
+
+// Variables para el contador de alojamientos de cada host
+let madridCount = {};
+let barcelonaCount = {};
+
+// Variable para indicar que se está cambiando el radio
+changingRadius = false;
+
+// Variable para relaciones id-color
+let hostColors = {};
+
+// DOMs de los tops de cada ciudad
+const madridTop = document.querySelector(".top-madrid-list");
+const barcelonaTop = document.querySelector(".top-barcelona-list");
+
+// DOMs del slider
 const radiusSlider = document.getElementById("radiusSlider");
 const radiusValue = document.getElementById("radiusValue");
 

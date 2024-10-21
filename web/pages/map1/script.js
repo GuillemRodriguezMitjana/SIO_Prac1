@@ -1,9 +1,4 @@
-// Capa del mapa de calor
-heatLayer = null;
-
-changingIntensity = false;
-
-// Función para cambiar la intensidad en función del precio
+// Función para cambiar la intensidad del mapa de calor en función del precio
 function updateHeatMap(intensity) {
   // Ignorar cambio en caso de que no haya terminado uno previo
   if (changingIntensity) return;
@@ -65,6 +60,15 @@ function changeLayerView(button) {
   toggleLayerView(heatLayer);
 }
 
+// MAIN ------------------------------------------------------------------------------------
+
+// Capa del mapa de calor
+heatLayer = null;
+
+// Variable para indicar que se está cambiando la intensidad
+changingIntensity = false;
+
+// DOMs del slider
 const priceSlider = document.getElementById("priceSlider");
 const priceValue = document.getElementById("priceValue");
 

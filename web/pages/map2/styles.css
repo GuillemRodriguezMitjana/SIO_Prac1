@@ -103,7 +103,7 @@
 
 @media (max-width: 900px) {
     .map-offset {
-        width: 100%;
+        display: none;
     }
 
     .center-buts-container {
