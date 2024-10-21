@@ -26,6 +26,7 @@ function updateBubbleMap(scale) {
       // Combinar los datos de ambas ciudades
       const combinedData = [...madridData.features, ...barcelonaData.features];
 
+      // Crear mapa de burbujas
       bubbleLayer = L.geoJSON(combinedData, {
         pointToLayer: function (feature, latlng) {
           const radius = getRadius(feature.properties.count, scale);

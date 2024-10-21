@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Precios | Mapa de calor</title>
+    <title>Hosts | Mapa categórico</title>
     <link rel="icon" href="../../images/favicon.png" type="image/x-icon" />
     <!-- Estilos CSS -->
     <link rel="stylesheet" href="../styles.css" />
@@ -26,13 +26,13 @@
         <i class="fas fa-home" style="margin-right: 2px"></i>
         Inicio
       </a>
-      | Mapa de calor de precios
+      | Mapa de categorías de hosts
     </p>
     <div class="separator"></div>
 
     <!-- Contenido de la página -->
     <div class="content">
-      <h1>Mapa de calor <span>precios</span></h1>
+      <h1>Mapa de categorías <span>hosts</span></h1>
 
       <!-- Container con las acciones para centrar el mapa -->
       <div class="center-container">
@@ -77,23 +77,15 @@
 
       <!-- Contenedor del mapa -->
       <div class="map-container">
-        <!-- Slider para el precio -->
+        <!-- Slider para el radio de los círculos -->
         <div class="slider-container">
-          <input
-            type="range"
-            id="priceSlider"
-            ,
-            min="25"
-            ,
-            max="400"
-            ,
-            step="25"
-            ,
-            value="200"
-          />
+          <div class="slider">
+            <div></div>
+            <input type="range" id="radiusSlider" min="1" max="10" step="1" value="5" />
+            <div></div>
+          </div>
           <div>
-            <p id="priceValue"></p>
-            <p>€</p>
+            <p id="radiusValue"></span></p>
           </div>
         </div>
 
@@ -102,14 +94,17 @@
 
         <!-- Barra lateral -->
         <div>
-          <!-- Capas -->
+          <!-- Top hosts -->
           <div class="layers">
-            <h3>Capas</h3>
-            <div class="layers-list">
-              <button onclick="changeLayerView(this)">
-                <i class="fa-solid fa-eye"></i>
-                Mapa de calor
-              </button>
+            <h3>Top Madrid</h3>
+            <div class="top-madrid-list">
+              
+            </div>
+          </div>
+          <div class="layers">
+            <h3>Top Barcelona</h3>
+            <div class="top-barcelona-list">
+              
             </div>
           </div>
 

@@ -103,6 +103,7 @@ h1 span {
 .layers h3 {
     margin-bottom: 20px;
     text-align: center;
+    color: var(--text-color-dark);
 }
 
 .layers h3 {
@@ -264,4 +265,20 @@ h1 span {
     .center-buts-container button {
         width: 100%;
     }
+}
+
+::-webkit-scrollbar {
+    background-color: transparent;
+    width: 5px;
+    padding: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--text-color-darker);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    cursor: pointer;
+    background-color: var(--text-color-dark);
 }
