@@ -67,6 +67,9 @@ function changeLayerView(button) {
 
 // MAIN ------------------------------------------------------------------------------------
 
+// Cambiar TMS por defecto
+changeMapLayer("openstreetmaps");
+
 // Capa del mapa de burbujas
 let bubbleLayer = null;
 

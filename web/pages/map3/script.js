@@ -26,7 +26,7 @@ function getColor(value) {
   if (value === undefined) {
     return "#000";
   } else if (value <= rango1) {
-    return "#00FF00";
+    return "#00BB00";
   } else if (value <= rango2) {
     return "#66FF00";
   } else if (value <= rango3) {
